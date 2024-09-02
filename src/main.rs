@@ -64,23 +64,23 @@ fn main() {
 
     let mut count = 0;
     let mut word = raw_vocab_vec_clear.get(0).unwrap().to_string();
-    let mut r_vocab_vec = vec![];
+    let mut rvocab_vec = vec![];
     for el in raw_vocab_vec_clear {
         if word == el {
             count += 1;
         } else {
             let count_word = (count, word);
-            r_vocab_vec.push(count_word);
+            rvocab_vec.push(count_word);
             word = el;
             count = 1
         }
     }
 
-    r_vocab_vec.sort_by(|a, b| b.0.cmp(&a.0));
+    rvocab_vec.sort_by(|a, b| b.0.cmp(&a.0));
 
-    let mut r_vocab_vec_string = vec![];
-    let count_max_length = r_vocab_vec[0].0.to_string().len();
-    for el in r_vocab_vec {
+    let mut rvocab_vec_string = vec![];
+    let count_max_length = rvocab_vec[0].0.to_string().len();
+    for el in rvocab_vec {
         let length_diff = count_max_length - el.0.to_string().len();
         let leveling_space = " ".to_string();
         let el0 = if length_diff != 0 {
@@ -90,21 +90,21 @@ fn main() {
             el.0.to_string()
         };
         let el1 = el.1;
-        r_vocab_vec_string.push(format!("{el0}  {el1}"));
+        rvocab_vec_string.push(format!("{el0}  {el1}"));
     }
     println!("> The vocabulary has been created.");
 
     // MAIN LOGIC END
 
-    let count = r_vocab_vec_string.len();
+    let count = rvocab_vec_string.len();
     let title = "Total unique words: ".to_string() + &count.to_string() + "\n";
-    let mut r_vocab_vec_full = vec![];
-    r_vocab_vec_full.push(title);
-    r_vocab_vec_full.append(&mut r_vocab_vec_string);
+    let mut rvocab_vec_full = vec![];
+    rvocab_vec_full.push(title);
+    rvocab_vec_full.append(&mut rvocab_vec_string);
 
-    let r_vocab = r_vocab_vec_full.join("\n");
-    let mut file = File::create("r_vocab.txt").expect(">>>>>>>> Can't create file!\n");
-    file.write_all(r_vocab.as_bytes())
+    let rvocab = rvocab_vec_full.join("\n");
+    let mut file = File::create("rvocab.txt").expect(">>>>>>>> Can't create file!\n");
+    file.write_all(rvocab.as_bytes())
         .expect(">>>>>>>> Can't write file!\n");
     println!("> The vocabulary has been written in a file.");
 

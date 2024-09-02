@@ -1,5 +1,5 @@
 [package]
-name = "r_vocab"
+name = "rvocab"
 version = "0.1.0"
 authors = ["Andrei Korzhyts"]
 edition = "2021"

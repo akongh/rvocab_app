@@ -41,4 +41,4 @@ Rust
 
 Rational Vocabulary
 Rational Vocabulary
-r_vocab
+rvocab
