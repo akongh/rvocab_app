@@ -1,4 +1,4 @@
-Total unique words: 6
+Total unique words: 7
 
 10  rust
  2  asdfghjkl
@@ -6,3 +6,4 @@ Total unique words: 6
  2  rational
  2  vocabulary
  1  rvocab
+ 1  word-dash
