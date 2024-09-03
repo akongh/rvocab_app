@@ -1,6 +1,10 @@
 a
 
-word-dash
+word-hyphen
+-hyphen
+-123
+123-word
+-
 
 ~!@#$%^&*()_+|{}:"<>?
 `-=\[];',./
