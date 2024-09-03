@@ -26,7 +26,7 @@ fn main() {
     }
     println!("> The text has been obtained from a source file.");
 
-    let re1 = Regex::new(r"[^A-Za-z-]").unwrap();
+    let re1 = Regex::new(r"[^A-Za-z ]").unwrap();
     let re2 = Regex::new(r" {2,}").unwrap();
     raw_vocab = re1.replace_all(&mut raw_vocab, " ").to_string();
     raw_vocab = re2.replace_all(&mut raw_vocab, " ").trim().to_string();

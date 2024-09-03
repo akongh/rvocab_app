@@ -1,9 +1,10 @@
-Total unique words: 7
+Total unique words: 8
 
 10  rust
  2  asdfghjkl
+ 2  hyphen
  2  qwertyuiop
  2  rational
  2  vocabulary
+ 2  word
  1  rvocab
- 1  word-dash
