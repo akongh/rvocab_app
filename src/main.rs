@@ -107,9 +107,9 @@ fn main() {
     file.write_all(rvocab.as_bytes())
         .expect(">>>>>>>> Can't write file!\n");
     println!("> The vocabulary has been written in a file.");
+    println!("> DONE!");
 
     let elapsed = now.elapsed();
 
-    println!("> DONE!");
     println!("Total time: {:.2?}", elapsed)
 }
