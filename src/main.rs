@@ -12,8 +12,8 @@ use std::time::Instant;
 fn main() {
     let now = Instant::now();
 
-    let version = "0.1.0";
-    println!("Rational Vocabulary {}", version);
+    const RVOCAB_VERSION: &str = "0.1.0";
+    println!("Rational Vocabulary {}", RVOCAB_VERSION);
 
     let mut file = File::open("text.txt").expect(">>>>>>>> Can't open file!\n");
     let mut raw_vocab = String::new();
