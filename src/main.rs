@@ -82,14 +82,14 @@ fn main() {
     let count_max_length = rvocab_vec[0].0.to_string().len();
     for el in rvocab_vec {
         let length_diff = count_max_length - el.0.to_string().len();
-        let leveling_space = " ".to_string();
+        let leveling_space = "&nbsp".to_string();
         let el0 = if length_diff != 0 {
             let leveling_spaces = leveling_space.repeat(length_diff);
             leveling_spaces + &el.0.to_string()
         } else {
             el.0.to_string()
         };
-        let el1 = el.1;
+        let el1 = "<a href='https://translate.yandex.com/be/?source_lang=en&target_lang=ru&text=".to_string() + &el.1 + " 'target='_blank'>" + &el.1 + "</a></br>";
         rvocab_vec_string.push(format!("{el0}  {el1}"));
     }
     println!("> The vocabulary has been created.");
@@ -103,7 +103,7 @@ fn main() {
     rvocab_vec_full.append(&mut rvocab_vec_string);
 
     let rvocab = rvocab_vec_full.join("\n");
-    let mut file = File::create("rvocab.txt").expect(">>>>>>>> Can't create file!\n");
+    let mut file = File::create("rvocab.html").expect(">>>>>>>> Can't create file!\n");
     file.write_all(rvocab.as_bytes())
         .expect(">>>>>>>> Can't write file!\n");
     println!("> The vocabulary has been written in a file.");

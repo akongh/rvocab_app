@@ -1,8 +1,8 @@
 Total unique words: 6
 
-10  rust
- 2  asdfghjkl
- 2  qwertyuiop
- 2  rational
- 2  vocabulary
- 1  rvocab
+10  <a href='https://translate.google.com/?sl=en&tl=ru&text=rust&op=translate'/>rust/a></br>
+ 2  <a href='https://translate.google.com/?sl=en&tl=ru&text=asdfghjkl&op=translate'/>asdfghjkl/a></br>
+ 2  <a href='https://translate.google.com/?sl=en&tl=ru&text=qwertyuiop&op=translate'/>qwertyuiop/a></br>
+ 2  <a href='https://translate.google.com/?sl=en&tl=ru&text=rational&op=translate'/>rational/a></br>
+ 2  <a href='https://translate.google.com/?sl=en&tl=ru&text=vocabulary&op=translate'/>vocabulary/a></br>
+ 1  <a href='https://translate.google.com/?sl=en&tl=ru&text=rvocab&op=translate'/>rvocab/a></br>
