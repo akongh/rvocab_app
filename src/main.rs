@@ -93,7 +93,7 @@ fn main() {
         } else {
             el.0.to_string()
         };
-        let el1 = "<a href='https://translate.yandex.com/en/?source_lang=en&target_lang=ru&text=".to_string() + &el.1 + " target='_blank'>" + &el.1 + "</a></br>";
+        let el1 = "<li><a href='https://translate.yandex.com/en/?source_lang=en&target_lang=ru&text=".to_string() + &el.1 + " target='_blank'>" + &el.1 + "</a></li>";
         rvocab_vec_string.push(format!("{el0}  {el1}"));
     }
     println!("> The vocabulary has been created.");
