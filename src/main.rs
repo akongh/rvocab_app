@@ -11,6 +11,8 @@ const RVOCAB_VERSION: &str = "0.1.0";
 const ERR_NOT_DONE: &str = "> NOT DONE!";
 const ERR_OPEN: &str = ">>>>>>>> Can't open file!\n";
 const ERR_READ: &str = ">>>>>>>> Can't read the file!\n";
+const ERR_CREATE: &str = ">>>>>>>> Can't create file!\n";
+const ERR_WRITE: &str = ">>>>>>>> Can't write file!\n";
 
 fn main() {
     let now = Instant::now();
@@ -24,8 +26,7 @@ fn main() {
 
     let mut file = File::open("text.txt").expect(ERR_OPEN);
     let mut raw_vocab = String::new();
-    file.read_to_string(&mut raw_vocab)
-        .expect(ERR_READ);
+    file.read_to_string(&mut raw_vocab).expect(ERR_READ);
     if raw_vocab.len() == 0 {
         println!("> Source file is empty.");
         println!("{ERR_NOT_DONE}");
@@ -116,9 +117,8 @@ fn main() {
     rvocab_vec_full.append(&mut rvocab_vec_string);
 
     let rvocab = rvocab_vec_full.join("\n");
-    let mut file = File::create("rvocab.html").expect(">>>>>>>> Can't create file!\n");
-    file.write_all(rvocab.as_bytes())
-        .expect(">>>>>>>> Can't write file!\n");
+    let mut file = File::create("rvocab.html").expect(ERR_CREATE);
+    file.write_all(rvocab.as_bytes()).expect(ERR_WRITE);
     println!("> The vocabulary has been written in a file.");
     println!("> DONE!");
 
