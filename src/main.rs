@@ -4,11 +4,8 @@ use std::fs::File;
 use std::io::prelude::*;
 use std::process;
 use std::time::Instant;
-//todo: add a license
-//todo: add README.md
 //todo: add comments
 //todo: add tests
-//todo: add colors for console text
 
 fn main() {
     let now = Instant::now();
