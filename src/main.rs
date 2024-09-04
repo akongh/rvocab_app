@@ -9,6 +9,9 @@ use std::time::Instant;
 //todo: add args if needed
 const RVOCAB_VERSION: &str = "0.1.0";
 const MSG_DONE: &str = "> DONE!";
+const MSG_OBTAINED: &str = "> The text has been obtained from a source file.";
+const MSG_CLEARED: &str = "> The source text has been cleared.";
+const MSG_CREATED: &str = "> The vocabulary has been created.";
 const MSG_WRITTEN: &str = "> The vocabulary has been written in a file.";
 const ERR_NOT_DONE: &str = "> NOT DONE!";
 const ERR_OPEN: &str = ">>>>>>>> Can't open file!\n";
@@ -36,7 +39,7 @@ fn main() {
         println!("{ERR_NOT_DONE}");
         process::exit(0);
     }
-    println!("> The text has been obtained from a source file.");
+    println!("{MSG_OBTAINED}");
 
     let re1 = Regex::new(r"[^A-Za-z ]").unwrap();
     let re2 = Regex::new(r" {2,}").unwrap();
@@ -62,7 +65,7 @@ fn main() {
             raw_vocab_vec_clear.push(el);
         }
     }
-    println!("> The source text has been cleared.");
+    println!("{MSG_CLEARED}");
     if raw_vocab_vec_clear.len() == 0 {
         println!(
             "> The source file does not have English words with a length of {} or more letters.",
@@ -110,7 +113,7 @@ fn main() {
                 + "</a></li>";
         rvocab_vec_string.push(format!("{el0}  {el1}"));
     }
-    println!("> The vocabulary has been created.");
+    println!("{MSG_CREATED}");
 
     // MAIN LOGIC END
 
