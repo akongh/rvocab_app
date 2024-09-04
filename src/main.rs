@@ -7,6 +7,7 @@ use std::time::Instant;
 //todo: add comments
 //todo: add tests
 //todo: add args if needed
+
 const RVOCAB_VERSION: &str = "0.1.0";
 const ERR_OPEN: &str = ">>>>>>>> Can't open file!\n";
 const ERR_READ: &str = ">>>>>>>> Can't read the file!\n";
