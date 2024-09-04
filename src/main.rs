@@ -9,6 +9,8 @@ use std::time::Instant;
 //todo: add args if needed
 const RVOCAB_VERSION: &str = "0.1.0";
 const ERR_NOT_DONE: &str = "> NOT DONE!";
+const ERR_OPEN: &str = ">>>>>>>> Can't open file!\n";
+const ERR_READ: &str = ">>>>>>>> Can't read the file!\n";
 
 fn main() {
     let now = Instant::now();
@@ -20,10 +22,10 @@ fn main() {
     // let arg1 = &args[1];
     // let arg2 = &args[2];
 
-    let mut file = File::open("text.txt").expect(">>>>>>>> Can't open file!\n");
+    let mut file = File::open("text.txt").expect(ERR_OPEN);
     let mut raw_vocab = String::new();
     file.read_to_string(&mut raw_vocab)
-        .expect(">>>>>>>> Can't read the file!\n");
+        .expect(ERR_READ);
     if raw_vocab.len() == 0 {
         println!("> Source file is empty.");
         println!("{ERR_NOT_DONE}");
