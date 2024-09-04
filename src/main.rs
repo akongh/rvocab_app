@@ -6,6 +6,7 @@ use std::process;
 use std::time::Instant;
 //todo: add comments
 //todo: add tests
+//todo: add args if needed
 
 fn main() {
     let now = Instant::now();
@@ -13,10 +14,10 @@ fn main() {
     const RVOCAB_VERSION: &str = "0.1.0";
     println!("RVocab {}", RVOCAB_VERSION);
 
-    let args: Vec<String> = env::args().collect();
-    dbg!(&args);
-    let arg1 = &args[1];
-    let arg2 = &args[2];
+    // let args: Vec<String> = env::args().collect();
+    // dbg!(&args);
+    // let arg1 = &args[1];
+    // let arg2 = &args[2];
 
     let mut file = File::open("text.txt").expect(">>>>>>>> Can't open file!\n");
     let mut raw_vocab = String::new();
