@@ -1,4 +1,4 @@
-Total unique words: 8
+Total unique words: 6
 
 10  rust
  2  asdfghjkl
