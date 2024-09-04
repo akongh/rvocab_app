@@ -1,4 +1,5 @@
 use regex::Regex;
+use std::env;
 use std::fs::File;
 use std::io::prelude::*;
 use std::process;
@@ -14,6 +15,11 @@ fn main() {
 
     const RVOCAB_VERSION: &str = "0.1.0";
     println!("RVocab {}", RVOCAB_VERSION);
+
+    let args: Vec<String> = env::args().collect();
+    dbg!(args);
+    let arg1 = &args[1];
+    let arg2 = &args[2];
 
     let mut file = File::open("text.txt").expect(">>>>>>>> Can't open file!\n");
     let mut raw_vocab = String::new();
