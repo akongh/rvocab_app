@@ -12,10 +12,10 @@ const RVOCAB_VERSION: &str = "0.1.0";
 
 const ERR_OPEN: &str = ">>>>>>>> Can't open file!\n";
 const ERR_READ: &str = ">>>>>>>> Can't read the file!\n";
-const ERR_CREATE: &str = ">>>>>>>> Can't create file!\n";
-const ERR_WRITE: &str = ">>>>>>>> Can't write file!\n";
 const ERR_EMPTY: &str = "> The source file is empty.";
 const ERR_NOT_HAVE: &str = "> The source file does not have English words.";
+const ERR_CREATE: &str = ">>>>>>>> Can't create file!\n";
+const ERR_WRITE: &str = ">>>>>>>> Can't write file!\n";
 const ERR_NOT_DONE: &str = "> NOT DONE!";
 
 const MSG_OBTAINED: &str = "> The text has been obtained from a source file.";
