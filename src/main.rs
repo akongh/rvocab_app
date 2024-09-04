@@ -8,6 +8,8 @@ use std::time::Instant;
 //todo: add tests
 //todo: add args if needed
 const RVOCAB_VERSION: &str = "0.1.0";
+const MSG_DONE: &str = "> DONE!";
+const MSG_WRITTEN: &str = "> The vocabulary has been written in a file.";
 const ERR_NOT_DONE: &str = "> NOT DONE!";
 const ERR_OPEN: &str = ">>>>>>>> Can't open file!\n";
 const ERR_READ: &str = ">>>>>>>> Can't read the file!\n";
@@ -121,8 +123,8 @@ fn main() {
     let rvocab = rvocab_vec_full.join("\n");
     let mut file = File::create("rvocab.html").expect(ERR_CREATE);
     file.write_all(rvocab.as_bytes()).expect(ERR_WRITE);
-    println!("> The vocabulary has been written in a file.");
-    println!("> DONE!");
+    println!("{MSG_WRITTEN}");
+    println!("{MSG_DONE}");
 
     let elapsed = now.elapsed();
 
