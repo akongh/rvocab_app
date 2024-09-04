@@ -13,6 +13,8 @@ const ERR_OPEN: &str = ">>>>>>>> Can't open file!\n";
 const ERR_READ: &str = ">>>>>>>> Can't read the file!\n";
 const ERR_CREATE: &str = ">>>>>>>> Can't create file!\n";
 const ERR_WRITE: &str = ">>>>>>>> Can't write file!\n";
+const ERR_EMPTY: &str = "> Source file is empty.";
+const ERR_NOT_HAVE: &str = "> The source file does not have English words.";
 
 fn main() {
     let now = Instant::now();
@@ -28,7 +30,7 @@ fn main() {
     let mut raw_vocab = String::new();
     file.read_to_string(&mut raw_vocab).expect(ERR_READ);
     if raw_vocab.len() == 0 {
-        println!("> Source file is empty.");
+        println!("{ERR_EMPTY}");
         println!("{ERR_NOT_DONE}");
         process::exit(0);
     }
@@ -39,7 +41,7 @@ fn main() {
     raw_vocab = re1.replace_all(&mut raw_vocab, " ").to_string();
     raw_vocab = re2.replace_all(&mut raw_vocab, " ").trim().to_string();
     if raw_vocab.len() == 0 {
-        println!("> The source file does not have English words.");
+        println!("{ERR_NOT_HAVE}");
         println!("{ERR_NOT_DONE}");
         process::exit(0);
     }
