@@ -8,7 +8,7 @@ use std::time::Instant;
 //todo: add tests
 //todo: add args if needed
 const RVOCAB_VERSION: &str = "0.1.0";
-const MSG_NOT_DONE: &str = "> NOT DONE!";
+const ERR_NOT_DONE: &str = "> NOT DONE!";
 
 fn main() {
     let now = Instant::now();
@@ -26,7 +26,7 @@ fn main() {
         .expect(">>>>>>>> Can't read the file!\n");
     if raw_vocab.len() == 0 {
         println!("> Source file is empty.");
-        println!("{MSG_NOT_DONE}");
+        println!("{ERR_NOT_DONE}");
         process::exit(0);
     }
     println!("> The text has been obtained from a source file.");
@@ -37,7 +37,7 @@ fn main() {
     raw_vocab = re2.replace_all(&mut raw_vocab, " ").trim().to_string();
     if raw_vocab.len() == 0 {
         println!("> The source file does not have English words.");
-        println!("{MSG_NOT_DONE}");
+        println!("{ERR_NOT_DONE}");
         process::exit(0);
     }
 
@@ -61,7 +61,7 @@ fn main() {
             "> The source file does not have English words with a length of {} or more letters.",
             min_word_long
         );
-        println!("{MSG_NOT_DONE}");
+        println!("{ERR_NOT_DONE}");
         process::exit(0);
     }
 
