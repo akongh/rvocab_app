@@ -24,7 +24,7 @@ const ERR_NOT_HAVE: &str = "> The source file does not have English words.";
 fn main() {
     let now = Instant::now();
 
-    println!("RVocab {}", RVOCAB_VERSION);
+    println!("RVocab {RVOCAB_VERSION}");
 
     // let args: Vec<String> = env::args().collect();
     // dbg!(&args);
@@ -68,9 +68,7 @@ fn main() {
     println!("{MSG_CLEARED}");
     if raw_vocab_vec_clear.len() == 0 {
         println!(
-            "> The source file does not have English words with a length of {} or more letters.",
-            min_word_long
-        );
+            "> The source file does not have English words with a length of {min_word_long} or more letters.");
         println!("{ERR_NOT_DONE}");
         process::exit(0);
     }
@@ -131,5 +129,5 @@ fn main() {
 
     let elapsed = now.elapsed();
 
-    println!("Total time: {:.2?}", elapsed)
+    println!("Total time: {elapsed:.2?}")
 }
