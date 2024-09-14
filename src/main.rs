@@ -4,6 +4,7 @@ use std::fs::File;
 use std::io::prelude::*;
 use std::process;
 use std::time::Instant;
+use chrono::{DateTime, Local};
 //todo: add tests
 //todo: add args if needed
 
@@ -127,8 +128,13 @@ fn main() {
 
     // Making a ready-made vector with a title and an HTML-list of unique words.
     let count = rvocab_vec_string.len();
+    let rvocab_version = "<p>RVocab ".to_string() + RVOCAB_VERSION + "</p>";
     let title = "<p>Total unique words: ".to_string() + &count.to_string() + "</p>";
+    let date_time_local = Local::now();
+    let date_time_format = date_time_local.to_rfc3339();
+    let date_time = "<p>".to_string() + &date_time_format + "</p>";
     let mut rvocab_vec_full = vec![];
+    rvocab_vec_full.push(rvocab_version);
     rvocab_vec_full.push(title);
     rvocab_vec_full.push("<ul>".to_string());
     rvocab_vec_full.append(&mut rvocab_vec_string);
