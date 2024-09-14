@@ -1,12 +1,10 @@
-use regex::Regex;
-// use std::env;
 use chrono::Local;
+use regex::Regex;
 use std::fs::File;
 use std::io::prelude::*;
 use std::process;
 use std::time::Instant;
 //todo: add tests
-//todo: add args if needed
 
 const RVOCAB_VERSION: &str = "0.1.0";
 
@@ -28,11 +26,6 @@ fn main() {
     let now = Instant::now();
 
     println!("RVocab {RVOCAB_VERSION}");
-
-    // let args: Vec<String> = env::args().collect();
-    // dbg!(&args);
-    // let arg1 = &args[1];
-    // let arg2 = &args[2];
 
     // Obtaining text from a text.txt.
     let mut file = File::open("text.txt").expect(ERR_OPEN);
