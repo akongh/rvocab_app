@@ -1,6 +1,6 @@
 use regex::Regex;
 // use std::env;
-use chrono::{DateTime, Local};
+use chrono::{Local};
 use std::fs::File;
 use std::io::prelude::*;
 use std::process;
@@ -131,8 +131,8 @@ fn main() {
     let rvocab_version = "<p>RVocab ".to_string() + RVOCAB_VERSION + "</p>";
     let title = "<p>Total unique words: ".to_string() + &count.to_string() + "</p>";
     let date_time_local = Local::now();
-    let date_time_format = date_time_local.to_rfc3339();
-    let date_time = "<p>".to_string() + &date_time_format + "</p>";
+    let date_time_format = date_time_local.format("%Y-%m-%d %H:%M:%S");
+    let date_time = "<p>".to_string() + &date_time_format.to_string() + "</p>";
     let mut rvocab_vec_full = vec![];
     rvocab_vec_full.push(rvocab_version);
     rvocab_vec_full.push(title);
