@@ -1,10 +1,10 @@
 use regex::Regex;
 // use std::env;
+use chrono::{DateTime, Local};
 use std::fs::File;
 use std::io::prelude::*;
 use std::process;
 use std::time::Instant;
-use chrono::{DateTime, Local};
 //todo: add tests
 //todo: add args if needed
 
@@ -136,6 +136,7 @@ fn main() {
     let mut rvocab_vec_full = vec![];
     rvocab_vec_full.push(rvocab_version);
     rvocab_vec_full.push(title);
+    rvocab_vec_full.push(date_time);
     rvocab_vec_full.push("<ul>".to_string());
     rvocab_vec_full.append(&mut rvocab_vec_string);
     rvocab_vec_full.push("</ul>".to_string());
