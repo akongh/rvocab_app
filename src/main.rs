@@ -4,7 +4,6 @@ use std::fs::File;
 use std::io::prelude::*;
 use std::process;
 use std::time::Instant;
-//todo: add comments
 //todo: add tests
 //todo: add args if needed
 
@@ -34,6 +33,7 @@ fn main() {
     // let arg1 = &args[1];
     // let arg2 = &args[2];
 
+    // Obtaining text from a text.txt.
     let mut file = File::open("text.txt").expect(ERR_OPEN);
     let mut raw_vocab = String::new();
     file.read_to_string(&mut raw_vocab).expect(ERR_READ);
@@ -44,6 +44,7 @@ fn main() {
     }
     println!("{MSG_OBTAINED}");
 
+    // Clearing text and reducing spaces.
     let re1 = Regex::new(r"[^A-Za-z ]").unwrap();
     let re2 = Regex::new(r" {2,}").unwrap();
     raw_vocab = re1.replace_all(&mut raw_vocab, " ").to_string();
@@ -54,6 +55,7 @@ fn main() {
         process::exit(0);
     }
 
+    // Converting text to a vector of words.
     let mut raw_vocab_vec: Vec<String> = raw_vocab
         .split(" ")
         .map(|s| s.to_string().to_lowercase())
@@ -61,6 +63,7 @@ fn main() {
 
     raw_vocab_vec.sort();
 
+    // Deleting short words.
     let mut raw_vocab_vec_clear = vec![];
     let min_word_long = 2;
     for el in raw_vocab_vec {
@@ -78,6 +81,7 @@ fn main() {
 
     // MAIN LOGIC BEGIN
 
+    // Removing duplicate words and counting the number for each word.
     let mut count = 0;
     let mut word = raw_vocab_vec_clear.get(0).unwrap().to_string();
     let mut rvocab_vec = vec![];
@@ -92,38 +96,45 @@ fn main() {
         }
     }
 
+    // Sort words by their number.
     rvocab_vec.sort_by(|a, b| b.0.cmp(&a.0));
 
+    // Alignment by spaces of length of quantity strings and making of a vector of HTML-list elements.
     let mut rvocab_vec_string = vec![];
     let count_max_length = rvocab_vec[0].0.to_string().len();
+    let leveling_space = "&nbsp;".to_string();
     for el in rvocab_vec {
         let length_diff = count_max_length - el.0.to_string().len();
-        let leveling_space = "&nbsp".to_string();
         let el0 = if length_diff != 0 {
             let leveling_spaces = leveling_space.repeat(length_diff);
             leveling_spaces + &el.0.to_string()
         } else {
             el.0.to_string()
         };
+        let el0 = "<li>".to_string() + el0.as_str();
         let el1 =
-            "<li><a href='https://translate.yandex.com/en/?source_lang=en&target_lang=ru&text="
+            "<a href='https://translate.yandex.com/en/?source_lang=en&target_lang=ru&text="
                 .to_string()
                 + &el.1
                 + "' target='_blank'>"
                 + &el.1
                 + "</a></li>";
-        rvocab_vec_string.push(format!("{el0}  {el1}"));
+        rvocab_vec_string.push(format!("{el0}&nbsp;-&nbsp;{el1}"));
     }
     println!("{MSG_CREATED}");
 
     // MAIN LOGIC END
 
+    // Making a ready-made vector with a title and an HTML-list of unique words.
     let count = rvocab_vec_string.len();
-    let title = "Total unique words: ".to_string() + &count.to_string() + "\n";
+    let title = "<p>Total unique words: ".to_string() + &count.to_string() + "</p>";
     let mut rvocab_vec_full = vec![];
     rvocab_vec_full.push(title);
+    rvocab_vec_full.push("<ul>".to_string());
     rvocab_vec_full.append(&mut rvocab_vec_string);
+    rvocab_vec_full.push("</ul>".to_string());
 
+    // Making ready-made HTML-markup and writing it to a rvocab.html.
     let rvocab = rvocab_vec_full.join("\n");
     let mut file = File::create("rvocab.html").expect(ERR_CREATE);
     file.write_all(rvocab.as_bytes()).expect(ERR_WRITE);
