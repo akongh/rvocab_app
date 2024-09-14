@@ -109,7 +109,7 @@ fn main() {
             "<li><a href='https://translate.yandex.com/en/?source_lang=en&target_lang=ru&text="
                 .to_string()
                 + &el.1
-                + "' target='_blank'>"
+                + " target='_blank'>"
                 + &el.1
                 + "</a></li>";
         rvocab_vec_string.push(format!("{el0}  {el1}"));
