@@ -1,6 +1,6 @@
 use regex::Regex;
 // use std::env;
-use chrono::{Local};
+use chrono::Local;
 use std::fs::File;
 use std::io::prelude::*;
 use std::process;
@@ -113,13 +113,12 @@ fn main() {
             el.0.to_string()
         };
         let el0 = "<li>".to_string() + el0.as_str();
-        let el1 =
-            "<a href='https://translate.yandex.com/en/?source_lang=en&target_lang=ru&text="
-                .to_string()
-                + &el.1
-                + "' target='_blank'>"
-                + &el.1
-                + "</a></li>";
+        let el1 = "<a href='https://translate.yandex.com/en/?source_lang=en&target_lang=ru&text="
+            .to_string()
+            + &el.1
+            + "' target='_blank'>"
+            + &el.1
+            + "</a></li>";
         rvocab_vec_string.push(format!("{el0}&nbsp;-&nbsp;{el1}"));
     }
     println!("{MSG_CREATED}");
