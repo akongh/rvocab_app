@@ -1,9 +1,23 @@
+Rational Vocabulary
+Rational Vocabulary
+rvocab
+
+Rust
+Rust
+Rust
+Rust
+Rust
+Rust
+Rust
+Rust
+
 a
 
 word-hyphen
 -hyphen
 -123
 123-word
+
 -
 
 ~!@#$%^&*()_+|{}:"<>?
@@ -33,18 +47,3 @@ ZXCVBNM
 ЯЧСМИТЬБЮ
 
 .
-
-Rust
-Rust
-Rust
-Rust
-Rust
-Rust
-Rust
-Rust
-Rust
-Rust
-
-Rational Vocabulary
-Rational Vocabulary
-rvocab
