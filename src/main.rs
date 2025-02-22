@@ -28,11 +28,14 @@ fn main() {
 
     println!("RVocab {RVOCAB_VERSION}");
 
-    let input_file_name = env::args().nth(1).expect("No input file name given.");
-    let output_file_name = env::args().nth(2).expect("No output file name given.");
+    let mut input_args = env::args();
+    let mut input_file_name = "text.txt".to_string();
+    if input_args.len() > 1 {
+        input_file_name = input_args.nth(1).expect("No input file name given.");
+    }
 
     // Obtaining text from a text.txt.
-    let mut file = File::open("text.txt").expect(ERR_OPEN);
+    let mut file = File::open(input_file_name).expect(ERR_OPEN);
     let mut raw_vocab = String::new();
     file.read_to_string(&mut raw_vocab).expect(ERR_READ);
     if raw_vocab.len() == 0 {
