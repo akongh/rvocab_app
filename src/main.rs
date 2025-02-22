@@ -1,5 +1,6 @@
 use chrono::Local;
 use regex::Regex;
+use std::env;
 use std::fs::File;
 use std::io::prelude::*;
 use std::process;
@@ -26,6 +27,9 @@ fn main() {
     let now = Instant::now();
 
     println!("RVocab {RVOCAB_VERSION}");
+
+    let input_file_name = env::args().nth(1).expect("No input file name given.");
+    let output_file_name = env::args().nth(2).expect("No output file name given.");
 
     // Obtaining text from a text.txt.
     let mut file = File::open("text.txt").expect(ERR_OPEN);
