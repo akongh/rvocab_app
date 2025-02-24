@@ -144,6 +144,25 @@ fn main() {
     let rvocab = rvocab_vec_full.join("\n");
     let mut file = File::create("rvocab.html").expect(ERR_CREATE);
     file.write_all(rvocab.as_bytes()).expect(ERR_WRITE);
+
+    ///////////////////////////////////
+
+    let mut html_open = File::open("rvocab.html").expect(ERR_OPEN);
+    let mut html_template = String::new();
+    html_open.read_to_string(&mut html_template).expect(ERR_READ);
+
+    let r_version = Regex::new(r"\{\{version}}").unwrap();
+    let r_date_time = Regex::new(r"\{\{date_time}}").unwrap();
+    let r_title = Regex::new(r"\{\{title}}").unwrap();
+    let r_rvocab = Regex::new(r"\{\{rvocab}}").unwrap();
+
+    let result = r_version.replace_all(&mut html_template, "x");
+    let result = r_date_time.replace_all(&mut html_template, "x");
+    let result = r_title.replace_all(&mut html_template, "x");
+    let result = r_rvocab.replace_all(&mut html_template, "x");
+
+    ///////////////////////////////////
+
     println!("{MSG_WRITTEN}");
     println!("{MSG_DONE}");
 
