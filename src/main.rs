@@ -131,9 +131,7 @@ fn main() {
     let date_time = Local::now().format("%Y-%m-%d %H:%M:%S");
     let rvocab = rvocab_vec_string.join("\n");
 
-    ///////////////////////////////////
-    // Making ready-made HTML-markup and writing it to a rvocab.html.
-
+    // Filling out the template.
     let mut html_open = File::open("rvocab.html").expect(ERR_OPEN);
     let mut html_template = String::new();
     html_open.read_to_string(&mut html_template).expect(ERR_READ);
@@ -148,10 +146,9 @@ fn main() {
     r_title.replace_all(&mut html_template, title);
     r_rvocab.replace_all(&mut html_template, rvocab);
 
-    ///////////////////////////////////
-
+    // Making ready-made HTML-markup and writing it to a rvocab.html.
     let mut file = File::create("rvocab.html").expect(ERR_CREATE);
-    file.write_all(rvocab.as_bytes()).expect(ERR_WRITE);
+    file.write_all(html_template.as_bytes()).expect(ERR_WRITE);
 
     println!("{MSG_WRITTEN}");
     println!("{MSG_DONE}");
