@@ -125,7 +125,7 @@ fn main() {
 
     // MAIN LOGIC END
 
-    // Making a ready-made vector with a title and an HTML-list of unique words.
+    // Making a title and date/time.
     let count = rvocab_vec_string.len();
     let title = "Total unique words: ".to_string() + &count.to_string();
     let date_time = Local::now().format("%Y-%m-%d %H:%M:%S");
