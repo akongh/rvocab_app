@@ -141,10 +141,10 @@ fn main() {
     let r_title = Regex::new(r"\{\{title}}").unwrap();
     let r_rvocab = Regex::new(r"\{\{rvocab}}").unwrap();
 
-    r_version.replace_all(&mut html_template, RVOCAB_VERSION);
-    r_date_time.replace_all(&mut html_template, date_time);
-    r_title.replace_all(&mut html_template, title);
-    r_rvocab.replace_all(&mut html_template, rvocab);
+    html_template = r_version.replace_all(&mut html_template, RVOCAB_VERSION).to_string();
+    html_template = r_date_time.replace_all(&mut html_template, date_time).to_string();
+    html_template = r_title.replace_all(&mut html_template, title).to_string();
+    html_template = r_rvocab.replace_all(&mut html_template, rvocab).to_string();
 
     // Making ready-made HTML-markup and writing it to a rvocab.html.
     let mut file = File::create("rvocab.html").expect(ERR_CREATE);
