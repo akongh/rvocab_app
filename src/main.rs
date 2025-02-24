@@ -132,7 +132,7 @@ fn main() {
     let rvocab = rvocab_vec_string.join("\n");
 
     // Filling out the template.
-    let mut html_open = File::open("rvocab.html").expect(ERR_OPEN);
+    let mut html_open = File::open("src/rvocab.html").expect(ERR_OPEN);
     let mut html_template = String::new();
     html_open.read_to_string(&mut html_template).expect(ERR_READ);
 
