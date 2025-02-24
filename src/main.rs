@@ -127,21 +127,21 @@ fn main() {
 
     // Making a ready-made vector with a title and an HTML-list of unique words.
     let count = rvocab_vec_string.len();
-    let rvocab_version = "<p>RVocab ".to_string() + RVOCAB_VERSION + "</p>";
-    let title = "<p>Total unique words: ".to_string() + &count.to_string() + "</p>";
+    // let rvocab_version = "<p>RVocab ".to_string() + RVOCAB_VERSION + "</p>";
+    let title = "Total unique words: ".to_string() + &count.to_string();
     let date_time_local = Local::now();
     let date_time_format = date_time_local.format("%Y-%m-%d %H:%M:%S");
-    let date_time = "<p>".to_string() + &date_time_format.to_string() + "</p>";
-    let mut rvocab_vec_full = vec![];
-    rvocab_vec_full.push(rvocab_version);
-    rvocab_vec_full.push(title);
-    rvocab_vec_full.push(date_time);
-    rvocab_vec_full.push("<ul>".to_string());
-    rvocab_vec_full.append(&mut rvocab_vec_string);
-    rvocab_vec_full.push("</ul>".to_string());
+    // let date_time = "<p>".to_string() + &date_time_format.to_string() + "</p>";
+    // let mut rvocab_vec_full = vec![];
+    // rvocab_vec_full.push(rvocab_version);
+    // rvocab_vec_full.push(title);
+    // rvocab_vec_full.push(date_time);
+    // rvocab_vec_full.push("<ul>".to_string());
+    // rvocab_vec_full.append(&mut rvocab_vec_string);
+    // rvocab_vec_full.push("</ul>".to_string());
 
     // Making ready-made HTML-markup and writing it to a rvocab.html.
-    let rvocab = rvocab_vec_full.join("\n");
+    let rvocab = rvocab_vec_string.join("\n");
     let mut file = File::create("rvocab.html").expect(ERR_CREATE);
     file.write_all(rvocab.as_bytes()).expect(ERR_WRITE);
 
@@ -156,10 +156,10 @@ fn main() {
     let r_title = Regex::new(r"\{\{title}}").unwrap();
     let r_rvocab = Regex::new(r"\{\{rvocab}}").unwrap();
 
-    r_version.replace_all(&mut html_template, "x");
-    r_date_time.replace_all(&mut html_template, "x");
-    r_title.replace_all(&mut html_template, "x");
-    r_rvocab.replace_all(&mut html_template, "x");
+    r_version.replace_all(&mut html_template, RVOCAB_VERSION);
+    r_date_time.replace_all(&mut html_template, date_time_format.to_string());
+    r_title.replace_all(&mut html_template, title);
+    r_rvocab.replace_all(&mut html_template, rvocab);
 
     ///////////////////////////////////
 
