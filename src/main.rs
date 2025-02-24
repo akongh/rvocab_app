@@ -6,6 +6,8 @@ use std::io::prelude::*;
 use std::process;
 use std::time::Instant;
 //todo: add tests
+//todo: comments for html making
+//todo: variable order for html making
 
 const RVOCAB_VERSION: &str = "0.1.0";
 
