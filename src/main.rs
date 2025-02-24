@@ -156,10 +156,10 @@ fn main() {
     let r_title = Regex::new(r"\{\{title}}").unwrap();
     let r_rvocab = Regex::new(r"\{\{rvocab}}").unwrap();
 
-    let result = r_version.replace_all(&mut html_template, "x");
-    let result = r_date_time.replace_all(&mut html_template, "x");
-    let result = r_title.replace_all(&mut html_template, "x");
-    let result = r_rvocab.replace_all(&mut html_template, "x");
+    r_version.replace_all(&mut html_template, "x");
+    r_date_time.replace_all(&mut html_template, "x");
+    r_title.replace_all(&mut html_template, "x");
+    r_rvocab.replace_all(&mut html_template, "x");
 
     ///////////////////////////////////
 
