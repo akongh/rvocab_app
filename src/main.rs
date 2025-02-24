@@ -125,17 +125,14 @@ fn main() {
 
     // MAIN LOGIC END
 
-    // Making a title and date/time.
+    // Making data for a template.
     let count = rvocab_vec_string.len();
     let title = "Total unique words: ".to_string() + &count.to_string();
     let date_time = Local::now().format("%Y-%m-%d %H:%M:%S");
-
-    // Making ready-made HTML-markup and writing it to a rvocab.html.
     let rvocab = rvocab_vec_string.join("\n");
-    let mut file = File::create("rvocab.html").expect(ERR_CREATE);
-    file.write_all(rvocab.as_bytes()).expect(ERR_WRITE);
 
     ///////////////////////////////////
+    // Making ready-made HTML-markup and writing it to a rvocab.html.
 
     let mut html_open = File::open("rvocab.html").expect(ERR_OPEN);
     let mut html_template = String::new();
@@ -152,6 +149,9 @@ fn main() {
     r_rvocab.replace_all(&mut html_template, rvocab);
 
     ///////////////////////////////////
+
+    let mut file = File::create("rvocab.html").expect(ERR_CREATE);
+    file.write_all(rvocab.as_bytes()).expect(ERR_WRITE);
 
     println!("{MSG_WRITTEN}");
     println!("{MSG_DONE}");
