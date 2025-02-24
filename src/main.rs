@@ -128,8 +128,7 @@ fn main() {
     // Making a ready-made vector with a title and an HTML-list of unique words.
     let count = rvocab_vec_string.len();
     let title = "Total unique words: ".to_string() + &count.to_string();
-    let date_time_local = Local::now();
-    let date_time_format = date_time_local.format("%Y-%m-%d %H:%M:%S");
+    let date_time = Local::now().format("%Y-%m-%d %H:%M:%S");
 
     // Making ready-made HTML-markup and writing it to a rvocab.html.
     let rvocab = rvocab_vec_string.join("\n");
@@ -148,7 +147,7 @@ fn main() {
     let r_rvocab = Regex::new(r"\{\{rvocab}}").unwrap();
 
     r_version.replace_all(&mut html_template, RVOCAB_VERSION);
-    r_date_time.replace_all(&mut html_template, date_time_format.to_string());
+    r_date_time.replace_all(&mut html_template, date_time.to_string());
     r_title.replace_all(&mut html_template, title);
     r_rvocab.replace_all(&mut html_template, rvocab);
 
