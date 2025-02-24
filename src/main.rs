@@ -128,7 +128,7 @@ fn main() {
     // Making data for a template.
     let count = rvocab_vec_string.len();
     let title = "Total unique words: ".to_string() + &count.to_string();
-    let date_time = Local::now().format("%Y-%m-%d %H:%M:%S");
+    let date_time = Local::now().format("%Y-%m-%d %H:%M:%S").to_string();
     let rvocab = rvocab_vec_string.join("\n");
 
     // Filling out the template.
@@ -142,7 +142,7 @@ fn main() {
     let r_rvocab = Regex::new(r"\{\{rvocab}}").unwrap();
 
     r_version.replace_all(&mut html_template, RVOCAB_VERSION);
-    r_date_time.replace_all(&mut html_template, date_time.to_string());
+    r_date_time.replace_all(&mut html_template, date_time);
     r_title.replace_all(&mut html_template, title);
     r_rvocab.replace_all(&mut html_template, rvocab);
 
