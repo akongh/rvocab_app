@@ -6,7 +6,6 @@ use std::io::prelude::*;
 use std::process;
 use std::time::Instant;
 //todo: add tests
-//todo: variable order for html making
 //todo: regex & z
 
 const RVOCAB_VERSION: &str = "0.1.0";
@@ -133,7 +132,6 @@ fn main() {
 
     // Making additional data for a template.
     let count = rvocab_vec_string.len();
-    let title = "Total unique words: ".to_string() + &count.to_string();
     let date_time = Local::now().format("%Y-%m-%d %H:%M:%S").to_string();
     let rvocab = rvocab_vec_string.join("\n");
 
@@ -146,17 +144,21 @@ fn main() {
 
     // Filling out the template.
     let r_version = Regex::new(r"\{\{version}}").unwrap();
+    let r_count = Regex::new(r"\{\{count}}").unwrap();
     let r_date_time = Regex::new(r"\{\{date_time}}").unwrap();
-    let r_title = Regex::new(r"\{\{title}}").unwrap();
     let r_rvocab = Regex::new(r"\{\{rvocab}}").unwrap();
     html_template = r_version
         .replace_all(&mut html_template, RVOCAB_VERSION)
         .to_string();
+    html_template = r_count
+        .replace_all(&mut html_template, count)
+        .to_string();
     html_template = r_date_time
         .replace_all(&mut html_template, date_time)
         .to_string();
-    html_template = r_title.replace_all(&mut html_template, title).to_string();
-    html_template = r_rvocab.replace_all(&mut html_template, rvocab).to_string();
+    html_template = r_rvocab
+        .replace_all(&mut html_template, rvocab)
+        .to_string();
 
     // Making ready-made HTML-markup and writing it to a output html.
     let mut file = File::create(DEFAULT_OUTPUT_FILE_NAME).expect(ERR_CREATE);
