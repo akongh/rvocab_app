@@ -8,6 +8,7 @@ use std::time::Instant;
 //todo: add tests
 //todo: comments for html making
 //todo: variable order for html making
+//todo: regex & z
 
 const RVOCAB_VERSION: &str = "0.1.0";
 
