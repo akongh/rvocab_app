@@ -69,7 +69,6 @@ fn main() {
         .split(" ")
         .map(|s| s.to_string().to_lowercase())
         .collect();
-
     raw_vocab_vec.sort();
 
     // Deleting short words.
