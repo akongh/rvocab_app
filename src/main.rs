@@ -63,9 +63,8 @@ fn main() {
     let mut raw_vocab_vec: Vec<String> = raw_vocab
         .split(" ")
         .map(|s| s.to_string().to_lowercase())
-        .collect();
-
-    raw_vocab_vec.sort();
+        .collect()
+        .sort();
 
     // Deleting short words.
     let mut raw_vocab_vec_clear = vec![];
