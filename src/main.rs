@@ -12,10 +12,14 @@ use std::time::Instant;
 
 const RVOCAB_VERSION: &str = "0.1.0";
 
+const DEFAULT_INPUT_FILE_NAME: &str = "text.txt";
+
+const ERR_INPUT_NAME: &str = ">>>>>>>> No input file name given.\n";
 const ERR_OPEN: &str = ">>>>>>>> Can't open file!\n";
 const ERR_READ: &str = ">>>>>>>> Can't read the file!\n";
 const ERR_EMPTY: &str = "> The source file is empty.";
 const ERR_NOT_HAVE: &str = "> The source file does not have English words.";
+const ERR_WORDS_LENGTH: &str = "> The source file does not have English words with a set length or more.";
 const ERR_CREATE: &str = ">>>>>>>> Can't create file!\n";
 const ERR_WRITE: &str = ">>>>>>>> Can't write file!\n";
 const ERR_NOT_DONE: &str = "> NOT DONE!";
@@ -32,9 +36,9 @@ fn main() {
     println!("RVocab {RVOCAB_VERSION}");
 
     let mut input_args = env::args();
-    let mut input_file_name = "text.txt".to_string();
+    let mut input_file_name = DEFAULT_INPUT_FILE_NAME.to_string();
     if input_args.len() > 1 {
-        input_file_name = input_args.nth(1).expect("No input file name given.");
+        input_file_name = input_args.nth(1).expect(ERR_INPUT_NAME);
     }
 
     // Obtaining text from a text.txt.
@@ -76,8 +80,7 @@ fn main() {
     }
     println!("{MSG_CLEARED}");
     if raw_vocab_vec_clear.len() == 0 {
-        println!(
-            "> The source file does not have English words with a length of {min_word_long} or more letters.");
+        println!("{ERR_WORDS_LENGTH}");
         println!("{ERR_NOT_DONE}");
         process::exit(0);
     }
