@@ -41,7 +41,7 @@ fn main() {
         input_file_name = input_args.nth(1).expect(ERR_INPUT_NAME);
     }
 
-    // Obtaining text from a input file.
+    // Obtaining text from an input file.
     let mut file = File::open(input_file_name).expect(ERR_OPEN);
     let mut raw_vocab = String::new();
     file.read_to_string(&mut raw_vocab).expect(ERR_READ);
@@ -160,7 +160,7 @@ fn main() {
         .replace_all(&mut html_template, rvocab)
         .to_string();
 
-    // Making ready-made HTML-markup and writing it to a output html.
+    // Making ready-made HTML-markup and writing it to an output html.
     let mut file = File::create(DEFAULT_OUTPUT_FILE_NAME).expect(ERR_CREATE);
     file.write_all(html_template.as_bytes()).expect(ERR_WRITE);
 
