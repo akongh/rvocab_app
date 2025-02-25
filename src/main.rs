@@ -19,7 +19,8 @@ const ERR_OPEN: &str = ">>>>>>>> Can't open file!\n";
 const ERR_READ: &str = ">>>>>>>> Can't read the file!\n";
 const ERR_EMPTY: &str = "> The source file is empty.";
 const ERR_NOT_HAVE: &str = "> The source file does not have English words.";
-const ERR_WORDS_LENGTH: &str = "> The source file does not have English words with a set length or more.";
+const ERR_WORDS_LENGTH: &str =
+    "> The source file does not have English words with a set length or more.";
 const ERR_CREATE: &str = ">>>>>>>> Can't create file!\n";
 const ERR_WRITE: &str = ">>>>>>>> Can't write file!\n";
 const ERR_NOT_DONE: &str = "> NOT DONE!";
@@ -139,15 +140,21 @@ fn main() {
     // Filling out the template.
     let mut html_open = File::open("src/rvocab.html").expect(ERR_OPEN);
     let mut html_template = String::new();
-    html_open.read_to_string(&mut html_template).expect(ERR_READ);
+    html_open
+        .read_to_string(&mut html_template)
+        .expect(ERR_READ);
 
     let r_version = Regex::new(r"\{\{version}}").unwrap();
     let r_date_time = Regex::new(r"\{\{date_time}}").unwrap();
     let r_title = Regex::new(r"\{\{title}}").unwrap();
     let r_rvocab = Regex::new(r"\{\{rvocab}}").unwrap();
 
-    html_template = r_version.replace_all(&mut html_template, RVOCAB_VERSION).to_string();
-    html_template = r_date_time.replace_all(&mut html_template, date_time).to_string();
+    html_template = r_version
+        .replace_all(&mut html_template, RVOCAB_VERSION)
+        .to_string();
+    html_template = r_date_time
+        .replace_all(&mut html_template, date_time)
+        .to_string();
     html_template = r_title.replace_all(&mut html_template, title).to_string();
     html_template = r_rvocab.replace_all(&mut html_template, rvocab).to_string();
 
