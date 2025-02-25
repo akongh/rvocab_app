@@ -131,7 +131,7 @@ fn main() {
     // MAIN LOGIC END
 
     // Making additional data for a template.
-    let count = rvocab_vec_string.len();
+    let count = rvocab_vec_string.len().to_string();
     let date_time = Local::now().format("%Y-%m-%d %H:%M:%S").to_string();
     let rvocab = rvocab_vec_string.join("\n");
 
