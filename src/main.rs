@@ -100,7 +100,12 @@ fn main() {
             word = el;
             count = 1
         }
+        // In this loop a last "count_word" is not added to "rvocab_vec".
     }
+
+    // Adding a last "count_word" to "rvocab_vec".
+    let count_word = (count, word);
+    rvocab_vec.push(count_word.clone());
 
     // Sort words by their number.
     rvocab_vec.sort_by(|a, b| b.0.cmp(&a.0));
