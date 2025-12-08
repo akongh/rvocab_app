@@ -141,7 +141,7 @@ fn main() {
     let rvocab = rvocab_vec_string.join("\n");
 
     // Obtaining markup from a template.
-    let mut html_open = File::open("src/template.html").expect(ERR_OPEN);
+    let mut html_open = File::open("template.html").expect(ERR_OPEN);
     let mut html_template = String::new();
     html_open
         .read_to_string(&mut html_template)
