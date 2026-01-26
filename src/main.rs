@@ -141,11 +141,7 @@ fn main() {
     let rvocab = rvocab_vec_string.join("\n");
 
     // Obtaining markup from a template.
-    let mut html_open = File::open("template.html").expect(ERR_OPEN);
-    let mut html_template = String::new();
-    html_open
-        .read_to_string(&mut html_template)
-        .expect(ERR_READ);
+    let mut html_template = include_str!("template.html").to_string();
 
     // Filling out the template.
     let r_version = Regex::new(r"\{\{version}}").unwrap();
@@ -153,16 +149,16 @@ fn main() {
     let r_date_time = Regex::new(r"\{\{date_time}}").unwrap();
     let r_rvocab = Regex::new(r"\{\{rvocab}}").unwrap();
     html_template = r_version
-        .replace_all(&mut html_template, RVOCAB_VERSION)
+        .replace_all(&html_template, RVOCAB_VERSION)
         .to_string();
     html_template = r_count
-        .replace_all(&mut html_template, count)
+        .replace_all(&html_template, count)
         .to_string();
     html_template = r_date_time
-        .replace_all(&mut html_template, date_time)
+        .replace_all(&html_template, date_time)
         .to_string();
     html_template = r_rvocab
-        .replace_all(&mut html_template, rvocab)
+        .replace_all(&html_template, rvocab)
         .to_string();
 
     // Making ready-made HTML-markup and writing it to an output html.
