@@ -1,34 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
-    <title>RVocab {{version}}</title>
-    <style>
-        body {
-            width: 800px;
-            margin: auto;
-            font-family: monospace;
-            font-size: 24px;
-        }
-    </style>
-</head>
-<body>
-<header>
-    <p><strong>RVocab {{version}}</strong></p>
-</header>
-<main>
-    <article>
-        <h1>Total unique words: {{count}}</h1>
-        <br>
-        <time>{{date_time}}</time>
-        <section>
-            <ul>
-                {{rvocab}}
-            </ul>
-        </section>
-    </article>
-</main>
-</body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>RVocab {{version}}</title>
+        <style>
+            {{style}}
+        </style>
+    </head>
+    <body>
+        <header>
+            <p><strong>RVocab {{version}}</strong></p>
+        </header>
+        <main>
+            <article>
+                <h1>Total unique words: {{count}}</h1>
+                <br />
+                <time>{{date_time}}</time>
+                <section>
+                    <ul>
+                        {{rvocab}}
+                    </ul>
+                </section>
+            </article>
+        </main>
+    </body>
 </html>

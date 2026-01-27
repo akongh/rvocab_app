@@ -136,20 +136,25 @@ fn main() {
     // MAIN LOGIC END
 
     // Making additional data for a template.
+    let css_style = include_str!("style.css").to_string();
     let count = rvocab_vec_string.len().to_string();
     let date_time = Local::now().format("%Y-%m-%d %H:%M:%S").to_string();
     let rvocab = rvocab_vec_string.join("\n");
 
-    // Obtaining markup from a template.
+    // Obtaining markup from a template & style.
     let mut html_template = include_str!("template.html").to_string();
 
     // Filling out the template.
     let r_version = Regex::new(r"\{\{version}}").unwrap();
+    let r_style = Regex::new(r"\{\{style}}").unwrap();
     let r_count = Regex::new(r"\{\{count}}").unwrap();
     let r_date_time = Regex::new(r"\{\{date_time}}").unwrap();
     let r_rvocab = Regex::new(r"\{\{rvocab}}").unwrap();
     html_template = r_version
         .replace_all(&html_template, RVOCAB_VERSION)
+        .to_string();
+    html_template = r_style
+        .replace_all(&html_template, css_style)
         .to_string();
     html_template = r_count
         .replace_all(&html_template, count)
