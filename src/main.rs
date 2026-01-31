@@ -2,6 +2,7 @@ use chrono::Local;
 use regex::Regex;
 use std::env;
 use std::fs::File;
+use std::io;
 use std::io::prelude::*;
 use std::process;
 use std::time::Instant;
@@ -175,5 +176,8 @@ fn main() {
 
     let elapsed = now.elapsed();
 
-    println!("Total time: {elapsed:.2?}")
+    println!("Total time: {elapsed:.2?}");
+
+    println!("Press \"ENTER\" to exit…");
+    let _ = io::stdin().read_line(&mut String::new());
 }
