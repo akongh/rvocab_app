@@ -15,12 +15,11 @@ const DEFAULT_INPUT_FILE_NAME: &str = "text.txt";
 const DEFAULT_OUTPUT_FILE_NAME: &str = "rvocab.html";
 
 const ERR_INPUT_NAME: &str = ">>>>>>>> No input file name given.\n";
-const ERR_OPEN: &str = ">>>>>>>> Can't open file!\n";
+const ERR_OPEN: &str = ">>>>>>>> Can't open the file!\n";
 const ERR_READ: &str = ">>>>>>>> Can't read the file!\n";
 const ERR_EMPTY: &str = "> The source file is empty.";
-const ERR_NOT_HAVE: &str = "> The source file does not have English words.";
-const ERR_WORDS_LENGTH: &str =
-    "> The source file does not have English words with a set length or more.";
+const ERR_NOT_HAVE: &str = "> The source file does't have English words.";
+const ERR_WORDS_LENGTH: &str = "> The source file does't have English words with a set length or more.";
 const ERR_CREATE: &str = ">>>>>>>> Can't create file!\n";
 const ERR_WRITE: &str = ">>>>>>>> Can't write file!\n";
 const ERR_NOT_DONE: &str = "> NOT DONE!";
