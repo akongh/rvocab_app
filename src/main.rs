@@ -87,7 +87,7 @@ fn main() {
 
     // MAIN LOGIC BEGIN
 
-    // Removing duplicate words and counting the number for each word.
+    // Removing duplicate words and counting the frequency for each word.
     let mut count = 0;
     let mut word = raw_vocab_vec_clear.get(0).unwrap().to_string();
     let mut rvocab_vec = vec![];
@@ -107,10 +107,10 @@ fn main() {
     let count_word = (count, word);
     rvocab_vec.push(count_word.clone());
 
-    // Sort words by their number.
+    // Sort words by their frequency.
     rvocab_vec.sort_by(|a, b| b.0.cmp(&a.0));
 
-    // Alignment by spaces of length of quantity strings and making of a vector of HTML-list elements.
+    // Alignment the length of the substrings of frequency by spaces and creating a vector of HTML-list elements.
     let mut rvocab_vec_string = vec![];
     let count_max_length = rvocab_vec[0].0.to_string().len();
     let leveling_space = "&nbsp;".to_string();
@@ -135,13 +135,15 @@ fn main() {
 
     // MAIN LOGIC END
 
-    // Making additional data for a template.
-    let css_style = include_str!("style.css").to_string();
+    // Making statistical data for a template.
     let count = rvocab_vec_string.len().to_string();
     let date_time = Local::now().format("%Y-%m-%d %H:%M:%S").to_string();
+
+    // Making common string from vector of strings.
     let rvocab = rvocab_vec_string.join("\n");
 
     // Obtaining markup from a template & style.
+    let css_style = include_str!("style.css").to_string();
     let mut html_template = include_str!("template.html").to_string();
 
     // Filling out the template.
