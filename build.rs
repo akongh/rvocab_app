@@ -3,7 +3,7 @@ use std::process::Command;
 
 fn main() {
     if cfg!(target_os = "windows") {
-        let rc_path = Path::new("src/resources.rc");
+        let rc_path = Path::new("src/resource.rc");
         let res_path = Path::new("src/resource.res");
 
         if !rc_path.exists() {
