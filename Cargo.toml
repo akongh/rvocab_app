@@ -3,7 +3,12 @@ name = "rvocab"
 version = "0.1.0"
 authors = ["Andrei Korzhyts"]
 edition = "2021"
+default-run = "rvocab"
 
 [dependencies]
 chrono = "0.4.38"
 regex = "1.10.6"
+
+[[bin]]
+name = "cleanall"
+path = "cleanall.rs"

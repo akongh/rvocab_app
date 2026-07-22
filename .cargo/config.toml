@@ -1,0 +1,2 @@
+[alias]
+cleanall = ["run", "--bin", "cleanall"]
