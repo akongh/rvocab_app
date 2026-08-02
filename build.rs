@@ -5,8 +5,7 @@ use std::process::Command;
 fn main() {
     let bin_name = env::var("CARGO_BIN_NAME").unwrap_or_default();
 
-    if bin_name == "" {
-        if cfg!(target_os = "windows") {
+    if bin_name.is_empty() && cfg!(target_os = "windows") {
             let rc_path = Path::new("src/resource.rc");
             let res_path = Path::new("src/resource.res");
 
@@ -15,7 +14,7 @@ fn main() {
             }
 
             let windres_status = Command::new("windres")
-                .args(&[rc_path.to_str().unwrap(), res_path.to_str().unwrap()])
+                .args([rc_path.to_str().unwrap(), res_path.to_str().unwrap()])
                 .status()
                 .expect("Failed to run windres. Make sure it is installed and in PATH.");
 
@@ -27,4 +26,3 @@ fn main() {
             println!("cargo:rerun-if-changed={}", rc_path.display());
         }
     }
-}

@@ -45,7 +45,7 @@ fn main() {
     let mut file = File::open(input_file_name).expect(ERR_OPEN);
     let mut raw_vocab = String::new();
     file.read_to_string(&mut raw_vocab).expect(ERR_READ);
-    if raw_vocab.len() == 0 {
+    if raw_vocab.is_empty() {
         println!("{ERR_EMPTY}");
         println!("{ERR_NOT_DONE}");
         process::exit(0);
@@ -55,9 +55,9 @@ fn main() {
     // Clearing text and reducing spaces.
     let re1 = Regex::new(r"[^A-Za-z]").unwrap();
     let re2 = Regex::new(r" {2,}").unwrap();
-    raw_vocab = re1.replace_all(&mut raw_vocab, " ").to_string();
-    raw_vocab = re2.replace_all(&mut raw_vocab, " ").trim().to_string();
-    if raw_vocab.len() == 0 {
+    raw_vocab = re1.replace_all(&raw_vocab, " ").to_string();
+    raw_vocab = re2.replace_all(&raw_vocab, " ").trim().to_string();
+    if raw_vocab.is_empty() {
         println!("{ERR_NOT_HAVE}");
         println!("{ERR_NOT_DONE}");
         process::exit(0);
@@ -79,7 +79,7 @@ fn main() {
         }
     }
     println!("{MSG_CLEARED}");
-    if raw_vocab_vec_clear.len() == 0 {
+    if raw_vocab_vec_clear.is_empty() {
         println!("{ERR_WORDS_LENGTH}");
         println!("{ERR_NOT_DONE}");
         process::exit(0);
@@ -89,7 +89,7 @@ fn main() {
 
     // Removing duplicate words and counting the frequency for each word.
     let mut count = 0;
-    let mut word = raw_vocab_vec_clear.get(0).unwrap().to_string();
+    let mut word = raw_vocab_vec_clear.first().unwrap().to_string();
     let mut rvocab_vec = vec![];
     for el in raw_vocab_vec_clear {
         if word == el {
@@ -108,7 +108,8 @@ fn main() {
     rvocab_vec.push(count_word.clone());
 
     // Sort words by their frequency.
-    rvocab_vec.sort_by(|a, b| b.0.cmp(&a.0));
+    // rvocab_vec.sort_by(|a, b| b.0.cmp(&a.0));
+    rvocab_vec.sort_by_key(|b| std::cmp::Reverse(b.0));
 
     // Alignment the length of the substrings of frequency by spaces and creating a vector of HTML-list elements.
     let mut rvocab_vec_string = vec![];
